@@ -23,13 +23,13 @@ class TestModels(unittest.TestCase):
         self.conn.commit()
 
         self.author = Author(id=1, name="John Doe")
-        self.magazine = Magazine(id=1, name="Tech Monthly", category="Technology")
-        self.article = Article(id=1, title="The Future of AI", content="Content about AI", author_id=self.author.id, magazine_id=self.magazine.id)
+        self.magazine = Magazine(id=1, name="Fashion week", category="Fashion")
+        self.article = Article(id=1, title="The Future of Fashion", content="Content about Fashion", author_id=self.author.id, magazine_id=self.magazine.id)
 
     def test_article_creation(self):
-        article = Article(id=2, title="AI in 2024", content="Content about AI in 2024", author_id=self.author.id, magazine_id=self.magazine.id)
-        self.assertEqual(article.title, "AI in 2024")
-        self.assertEqual(article.content, "Content about AI in 2024")
+        article = Article(id=2, title="Fashion in 2024", content="Content about Fashion in 2024", author_id=self.author.id, magazine_id=self.magazine.id)
+        self.assertEqual(article.title, "Fashion in 2024")
+        self.assertEqual(article.content, "Content about Fashion in 2024")
         self.assertEqual(article.author_id, self.author.id)
         self.assertEqual(article.magazine_id, self.magazine.id)
 
@@ -37,7 +37,7 @@ class TestModels(unittest.TestCase):
         articles = [self.article]
         author_articles = self.author.articles(articles)
         self.assertEqual(len(author_articles), 1)
-        self.assertEqual(author_articles[0].title, "The Future of AI")
+        self.assertEqual(author_articles[0].title, "The Future of Fashion")
 
     def test_author_creation(self):
         self.assertEqual(self.author.name, "John Doe")
@@ -52,7 +52,7 @@ class TestModels(unittest.TestCase):
         articles = [self.article]
         article_titles = self.magazine.article_titles(articles)
         self.assertEqual(len(article_titles), 1)
-        self.assertEqual(article_titles[0], "The Future of AI")
+        self.assertEqual(article_titles[0], "The Future of Fashion")
 
     def test_magazine_articles(self):
         articles = [self.article]
@@ -72,8 +72,8 @@ class TestModels(unittest.TestCase):
         self.assertEqual(contributors[0], self.author.id)
 
     def test_magazine_creation(self):
-        self.assertEqual(self.magazine.name, "Tech Monthly")
-        self.assertEqual(self.magazine.category, "Technology")
+        self.assertEqual(self.magazine.name, "Fashion week")
+        self.assertEqual(self.magazine.category, "Fashion")
 
 if __name__ == "__main__":
     unittest.main()
