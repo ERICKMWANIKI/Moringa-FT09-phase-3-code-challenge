@@ -9,11 +9,11 @@ def main():
     create_tables()
 
     # Collect user input
-    author_name = input("Enter author's name: ")
-    magazine_name = input("Enter magazine name: ")
-    magazine_category = input("Enter magazine category: ")
-    article_title = input("Enter article title: ")
-    article_content = input("Enter article content: ")
+    author_name = input("Erick Ndirangu ")
+    magazine_name = input("E.M.N ")
+    magazine_category = input("Fashion ")
+    article_title = input("Drip ")
+    article_content = input("Best Fits ")
 
     # Connect to the database
     conn = get_db_connection()
